@@ -1,12 +1,12 @@
 # Monitor your cluster security
 
 This repository uses the following applications:
-- [Prometheus Stack Helm Chart]()
-- [Grafana]()
-- [Promtail & Loki]()
-- [Starboard Exporter]()
-- [Starboard Helm Chart]()
-- [Tracee]()
+- [Prometheus Stack Helm Chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+- [Grafana](https://grafana.com/)
+- [Promtail & Loki](https://grafana.com/oss/loki/)
+- [Starboard Exporter](https://github.com/giantswarm/starboard-exporter)
+- [Starboard Helm Chart](https://github.com/aquasecurity/starboard)
+- [Tracee](https://github.com/aquasecurity/tracee)
 
 Here is how to use the resources:
 

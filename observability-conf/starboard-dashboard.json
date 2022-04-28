@@ -7,7 +7,7 @@
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Vulnerabilities",
+        "name": "Annotations & Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -90,7 +90,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{resource_namespace=\"app\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{image_namespace=\"app\", image_tag=\"9.0.0\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -175,7 +175,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{resource_namespace=\"app\",severity=\"MEDIUM\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{image_namespace=\"app\",severity=\"MEDIUM\", image_tag=\"9.0.0\"})",
           "interval": "",
           "legendFormat": "MEDIUM",
           "refId": "A"
@@ -186,7 +186,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{resource_namespace=\"app\",severity=\"CRITICAL\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{image_namespace=\"app\",severity=\"CRITICAL\", image_tag=\"9.0.0\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "CRITICAL",
@@ -198,7 +198,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{resource_namespace=\"app\",severity=\"HIGH\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{image_namespace=\"app\",severity=\"HIGH\", image_tag=\"9.0.0\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "HIGH",
@@ -210,7 +210,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{resource_namespace=\"app\",severity=\"LOW\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{image_namespace=\"app\",severity=\"LOW\", image_tag=\"9.0.0\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "LOW",
@@ -222,7 +222,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{resource_namespace=\"app\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{image_namespace=\"app\", image_tag=\"9.0.0\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "ALL",
@@ -294,7 +294,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"CRITICAL\"})",
+          "expr": "sum(sstarboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"CRITICAL\"})",
           "interval": "",
           "legendFormat": "CRITICAL",
           "refId": "A"
@@ -305,7 +305,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"HIGH\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"HIGH\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "HIGH",
@@ -317,7 +317,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"MEDIUM\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"MEDIUM\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "MEDIUM",
@@ -329,23 +329,11 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"LOW\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"LOW\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "LOW",
           "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
-          "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{})",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "ALL",
-          "refId": "E"
         }
       ],
       "title": "Summary of all vulnerabilities",
@@ -427,7 +415,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"CRITICAL\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"CRITICAL\"})",
           "interval": "",
           "legendFormat": "CRITICAL",
           "refId": "A"
@@ -438,7 +426,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"HIGH\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"HIGH\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "HIGH",
@@ -450,7 +438,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"MEDIUM\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"MEDIUM\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "MEDIUM",
@@ -462,7 +450,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"LOW\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"LOW\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "LOW",
@@ -474,7 +462,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{})",
           "hide": false,
           "interval": "",
           "legendFormat": "ALL",
@@ -513,128 +501,6 @@
         "x": 0,
         "y": 18
       },
-      "id": 8,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.4.6",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
-          "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"LOW\"})",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "LOW Vulnerabilities",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 18
-      },
-      "id": 4,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.4.6",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
-          "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"CRITICAL\"})",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "CRITICAL Vulnerabilities",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 26
-      },
       "id": 6,
       "options": {
         "colorMode": "value",
@@ -658,7 +524,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"MEDIUM\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"MEDIUM\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -694,7 +560,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 26
+        "y": 18
       },
       "id": 2,
       "options": {
@@ -719,13 +585,135 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"HIGH\"})",
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"HIGH\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
       "title": "HIGH vulnerabilities",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 26
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.4.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"LOW\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "LOW Vulnerabilities",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 27
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.4.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"CRITICAL\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "CRITICAL Vulnerabilities",
       "type": "stat"
     }
   ],
@@ -736,13 +724,13 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Vulnerability Overview",
-  "uid": "9vmXy8wnz",
-  "version": 2,
+  "title": "Vulnerabilities",
+  "uid": "iNfuxlQnz",
+  "version": 1,
   "weekStart": ""
 }
