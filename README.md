@@ -4,8 +4,8 @@ This repository uses the following applications:
 - [Prometheus Stack Helm Chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 - [Grafana](https://grafana.com/)
 - [Promtail & Loki](https://grafana.com/oss/loki/)
-- [Starboard Exporter](https://github.com/giantswarm/starboard-exporter)
-- [Starboard Helm Chart](https://github.com/aquasecurity/starboard)
+- [Trivy Exporter](https://github.com/giantswarm/starboard-exporter)
+- [Trivy Helm Chart](https://github.com/aquasecurity/trivy-operator)
 - [Tracee](https://github.com/aquasecurity/tracee)
 
 Here is how to use the resources:
@@ -37,26 +37,29 @@ Install loki to collect all the logs from promtail:
 helm upgrade --install loki grafana/loki-distributed -n monitoring
 ```
 
-Install Starbaord operator:
+Install Trivy operator:
 ```
 helm repo add aqua https://aquasecurity.github.io/helm-charts/
 helm repo update
 ```
 
+And finally, the Helm chart can be installed with the following command:
+
 ```
-helm install starboard-operator aqua/starboard-operator \
-  --namespace starboard-system \
+helm install trivy-operator aqua/trivy-operator \
+  --namespace trivy-system \
   --create-namespace \
   --set="trivy.ignoreUnfixed=true" \
-  --version 0.10.4
+  --version 0.1.3
 ```
+Make sure to cross-check the updated installation incl. the latest versio  of the operator in the docs: https://aquasecurity.github.io/trivy-operator/latest/operator/installation/helm/
 
-Install the Starboard exporter:
+Install the Trivy exporter -- note that here we are still using the old Starboard exporter:
 
 ```
 helm repo add giantswarm https://giantswarm.github.io/giantswarm-catalog
 helm repo update
-helm upgrade -i starboard-exporter --namespace <starboard namespace> giantswarm/starboard-exporter
+helm upgrade -i trivy-exporter --namespace <trivy namespace> giantswarm/starboard-exporter
 ```
 
 Install tracee to monitor your cluster:

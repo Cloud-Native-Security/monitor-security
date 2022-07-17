@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: trivy-metrics-servicemonitor
+  # Change this to the namespace the Prometheus instance is running in
+  namespace: trivy-system
+  labels:
+    app.kubernetes.io/instance: trivy-operator 
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: trivy-operator  # target trivy service
+  endpoints:
+  - port: metrics
+    interval: 15s
