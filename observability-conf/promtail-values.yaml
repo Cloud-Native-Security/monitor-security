@@ -1,2 +1,4 @@
 config:
-  lokiAddress: "http://loki-loki-distributed-gateway/loki/api/v1/push"
+  serverPort: 80
+  clients:
+    - url: http://loki-loki-distributed-gateway/loki/api/v1/push
