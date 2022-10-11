@@ -27,6 +27,10 @@ helm upgrade --install prom prometheus-community/kube-prometheus-stack -n monito
 
 Install promtail to colelct logs from every node:
 
+```
+helm repo add grafana https://grafana.github.io/helm-charts
+```
+
 
 ```
 helm upgrade --install promtail grafana/promtail -f observability-conf/promtail-values.yaml -n monitoring
@@ -50,17 +54,10 @@ helm install trivy-operator aqua/trivy-operator \
   --namespace trivy-system \
   --create-namespace \
   --set="trivy.ignoreUnfixed=true" \
-  --version 0.1.3
+  --set="serviceMonitor.enabled=true" \
+  --version 0.3.0
 ```
 Make sure to cross-check the updated installation incl. the latest versio  of the operator in the docs: https://aquasecurity.github.io/trivy-operator/latest/operator/installation/helm/
-
-Install the Trivy exporter -- note that here we are still using the old Starboard exporter:
-
-```
-helm repo add giantswarm https://giantswarm.github.io/giantswarm-catalog
-helm repo update
-helm upgrade -i trivy-exporter --namespace <trivy namespace> giantswarm/starboard-exporter
-```
 
 Install tracee to monitor your cluster:
 
