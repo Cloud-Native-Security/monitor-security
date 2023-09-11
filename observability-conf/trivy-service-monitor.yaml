@@ -10,6 +10,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/instance: trivy-operator  # target trivy service
+      app.kubernetes.io/name: trivy-operator 
   endpoints:
   - port: metrics
     interval: 15s

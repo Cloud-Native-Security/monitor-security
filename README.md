@@ -22,10 +22,14 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 ```
 
 ```
+helm repo update
+```
+
+```
 helm upgrade --install prom prometheus-community/kube-prometheus-stack -n monitoring --values observability-conf/prom-values.yaml
 ```
 
-Install promtail to colelct logs from every node:
+Install promtail to collect logs from every node:
 
 ```
 helm repo add grafana https://grafana.github.io/helm-charts
@@ -50,26 +54,24 @@ helm repo update
 And finally, the Helm chart can be installed with the following command:
 
 ```
-helm install trivy-operator aqua/trivy-operator \
+helm upgrade --install trivy-operator aqua/trivy-operator \
   --namespace trivy-system \
   --create-namespace \
   --set="trivy.ignoreUnfixed=true" \
   --set="serviceMonitor.enabled=true" \
-  --version 0.3.0
+  --version 0.18.0
 ```
+
+Alternatively, it's also possible to set a custom values.yaml manifest that overrides the default values in the Helm Chart. We have set up the following [values.yaml](./observability-conf/trivy-values.yaml) manifest for the Trivy Operator. To provide the file upon installing the operator, use the following command:
+```
+helm upgrade --install trivy-operator aqua/trivy-operator \
+  --namespace trivy-system \
+  --create-namespace \
+  --values ./observability-conf/trivy-values.yaml \
+  --version 0.18.0
+```
+
 Make sure to cross-check the updated installation incl. the latest versio  of the operator in the docs: https://aquasecurity.github.io/trivy-operator/latest/operator/installation/helm/
-
-Install tracee to monitor your cluster:
-
-```
-kubectl apply -f observability-conf/tracee.yaml
-```
-
-Create application:
-```
-kubectl create ns app
-kubectl apply -f app-manifests -n app
-```
 
 ## Open the dashboards in Grafana
 
@@ -83,6 +85,7 @@ The login is:
     Password: prom-operator
 
 And provide Grafana with the dashboards in the [observability-conf](./observability-conf/) folder.
+Note that Trivy also has a custom Dashboard -- [the ID: 17813 ]
 
 ![Vulnerability stats](./assets/vulnerabilities.png)
 
