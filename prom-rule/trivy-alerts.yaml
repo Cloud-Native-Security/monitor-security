@@ -1,0 +1,38 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: example-rules
+    role: alert-rules
+  name: prom
+spec:
+  groups:
+    - name: trivy_group
+      rules:
+      - alert: trivy_unhealthy
+        expr: sum by (namespace, pod)(kube_pod_status_phase{phase=~"Unknown|Failed", namespace="trivy-system"}) != 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          description: Trivy container is unhealthy for more than 30 seconds.
+          summary: Trivy unhealthy
+          type: Container
+      - alert: trivy_missing
+        expr: up{namespace="trivy-system", container="trivy-operator"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          description: Trivy container is missing for more than 30 seconds.
+          summary: Trivy missing
+          type: Pod
+      - alert: trivy_new_critical_vuln
+        expr: sum(trivy_image_vulnerabilities{severity="Critical", namespace="test"}) > 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          description: Trivy found a new CRITICAL vulnerability in a deployed container image
+          summary: Trivy new CRITICAL vulnerability
+          type: CRD
