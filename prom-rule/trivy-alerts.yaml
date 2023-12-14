@@ -19,7 +19,7 @@ spec:
           summary: Trivy unhealthy
           type: Container
       - alert: trivy_missing
-        expr: up{namespace="trivy-system", container="trivy-operator"} == 0
+        expr: kube_deployment_status_observed_generation{namespace="trivy-system"} != kube_deployment_metadata_generation
         for: 30s
         labels:
           severity: critical
