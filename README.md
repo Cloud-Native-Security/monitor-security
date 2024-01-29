@@ -99,7 +99,7 @@ helm upgrade --install trivy-operator aqua/trivy-operator \
   --namespace trivy-system \
   --create-namespace \
   --values ./observability-conf/trivy-values.yaml \
-  --version 0.18.4
+  --version 0.20.2
 ```
 
 Make sure to cross-check the updated installation incl. the latest versio  of the operator in the docs: https://aquasecurity.github.io/trivy-operator/latest/operator/installation/helm/
