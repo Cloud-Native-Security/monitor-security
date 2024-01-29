@@ -90,7 +90,7 @@ helm upgrade --install trivy-operator aqua/trivy-operator \
   --create-namespace \
   --set="trivy.ignoreUnfixed=true" \
   --set="serviceMonitor.enabled=true" \
-  --version 0.18.4
+  --version 0.20.2
 ```
 
 Alternatively, it's also possible to set a custom values.yaml manifest that overrides the default values in the Helm Chart. We have set up the following [values.yaml](./observability-conf/trivy-values.yaml) manifest for the Trivy Operator. To provide the file upon installing the operator, use the following command:
